@@ -1,5 +1,15 @@
 ## 使用
 
+### 安装
+
+```bash
+// with npm
+npm install @arco-design/web-vue
+
+// with yarn
+yarn add @arco-design/web-vue
+```
+### 示例
 ```js
 import BScroll from '@better-scroll/core'
 import InfinityScroll from 'pulldown-infinity-scroll'
@@ -38,3 +48,22 @@ const bs = new BScroll('.wrapper', {
 ```
 
 
+| Event               | Description                                             | 参数                      |
+| ------------------- | ------------------------------------------------------- | ------------------------ |
+| reset               | 刷新scroll,并且重新请求数据 | 无 | 
+| unshift             | 手动添加新的数据 | extends {id: string | number} | 
+| resize              | 保持滚动位置，重新计算，当列表dom尺寸改变时调用，以保证布局正确 | 无 ｜
+| remove              | 删除指定数据 | id: string | number |
+| replace              | 替换指定数据 | extends {id: string | number} |
+
+
+
+#### 示例
+
+```js
+bs.trigger('reset');
+bs.trigger('resize');
+bs.trigger('unshift', chatData);
+bs.trigger('replace', chatData);
+bs.trigger('remove', id);
+```
