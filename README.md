@@ -4,10 +4,10 @@
 
 ```bash
 // with npm
-npm install @arco-design/web-vue
+npm install pulldown-infinity-scroll
 
 // with yarn
-yarn add @arco-design/web-vue
+yarn add pulldown-infinity-scroll
 ```
 ### 示例
 ```js
