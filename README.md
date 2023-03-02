@@ -51,10 +51,10 @@ const bs = new BScroll('.wrapper', {
 | Event               | Description                                             | 参数                      |
 | ------------------- | ------------------------------------------------------- | ------------------------ |
 | reset               | 刷新scroll,并且重新请求数据 | 无 | 
-| unshift             | 手动添加新的数据 | extends {id: string | number} | 
+| unshift             | 手动添加新的数据 | extends {id: string \| number} | 
 | resize              | 保持滚动位置，重新计算，当列表dom尺寸改变时调用，以保证布局正确 | 无 ｜
-| remove              | 删除指定数据 | id: string | number |
-| replace              | 替换指定数据 | extends {id: string | number} |
+| remove              | 删除指定数据 | id: string \| number |
+| replace              | 替换指定数据 | extends {id: string \| number} |
 
 
 
