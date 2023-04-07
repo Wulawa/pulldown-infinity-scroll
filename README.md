@@ -12,18 +12,11 @@ yarn add pulldown-infinity-scroll
 ### 示例
 ```js
 import BScroll from '@better-scroll/core'
-import InfinityScroll from 'pulldown-infinity-scroll'
+import InfinityScroll, {InfinityOptions} from 'pulldown-infinity-scroll'
 BScroll.use(InfinityScroll)
 
-export interface InfinityOptions<T> {
-	fetch: (count: number, loadednum: number) => Promise<Array<T> | false>;
-	render: (item: T, div?: HTMLElement, index?: number) => HTMLElement;
-	onUpdate?: (loadednum: number) => void;
-	destroy: (id: string) => void;
-	createTombstone: () => HTMLElement;
-}
 const bs = new BScroll('.wrapper', {
-  'pulldown-infinity-scroll': {
+  'pulldown-infinity': {
     fetch(count, loadednum) {
       // 获取大于 count 数量的数据，该函数是异步的，它需要返回一个 Promise。
       // 成功获取数据后，你需要 resolve 数据数组（也可以 resolve 一个 Promise）（数据中必须包含id,计算、销毁等都需要id来确认）。
@@ -43,7 +36,7 @@ const bs = new BScroll('.wrapper', {
     destroy(id) {
       // 当未展示内容销毁时触发
     }
-  } as InfinityOptions
+  } as InfinityOptions<fetchData>
 })
 ```
 

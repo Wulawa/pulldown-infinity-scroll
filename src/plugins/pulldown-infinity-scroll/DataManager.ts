@@ -126,37 +126,30 @@ export default class DataManager {
 	remove(id: number | string): pListItem | undefined {
 		const index = this.list.findIndex((item) => item.data.id === id);
 		if (index > -1) {
-			for (let i = index; i < this.list.length; i++) {
-				this.list[i].pos = null;
-			}
+			// for (let i = index; i < this.list.length; i++) {
+			// 	this.list[i].pos = null;
+			// }
 			this.loadedNum -= 1;
 			return this.list.splice(index, 1)[0];
 		} else {
 			console.warn(`remove error: not find data with id:${id}`);
 		}
 	}
+	replace(data: any, index?: number): pListItem | undefined {
+		const i = typeof index === 'number' ? index : this.list.findIndex((item) => item.data.id === data.id);
+		if (i > -1) {
+			return this.list.splice(i, 1, new ListItem(data))[0];
+		} else {
+			console.warn(`remove error: not find data with id:${data.id}`);
+		}
+	}
 	getList(): Array<pListItem> {
 		return this.list;
 	}
-
-	resetState(data?: any): Promise<boolean> {
-		return new Promise((resolve, reject) => {
-			if (data) {
-				const index = this.list.findIndex((item) => item.data.id === data.id);
-				if (index > -1) {
-					this.list.splice(index, 1, new ListItem(data));
-					resolve(true);
-				} else {
-					console.warn(`remove error: not find data with id:${data.id}`);
-					resolve(false);
-				}
-			} else {
-				this.loadedNum = 0;
-				this.fetching = false;
-				this.hasMore = true;
-				this.list = [];
-				resolve(true);
-			}
-		});
+	resetState() {
+		this.loadedNum = 0;
+		this.fetching = false;
+		this.hasMore = true;
+		this.list = [];
 	}
 }

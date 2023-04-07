@@ -9,7 +9,7 @@ export interface InfinityOptions<T extends {id: any}> {
 	fetch: (count: number, loadednum: number) => Promise<Array<T> | false>;
 	render: (item: T, div?: HTMLElement, index?: number) => HTMLElement;
 	onUpdate?: (loadednum: number) => void;
-	destroy: (id: string) => void;
+	destroy: (id: string | number) => void;
 	createTombstone: () => HTMLElement;
 }
 
@@ -88,6 +88,7 @@ export default class InfinityScroll<T extends {id: any}> {
 		const data = this.dataManager.remove(id);
 		if (data && data.dom) {
 			this.scroll.scroller.content.removeChild(data.dom);
+			(<InfinityOptions<T>>this.options).destroy(id);
 			this.update({ y: this.indexCalculator.lastPos });
 		}
 	}
@@ -97,9 +98,12 @@ export default class InfinityScroll<T extends {id: any}> {
 		this.dataManager.resetState();
 		this.update({ y: 0 });
 	}
-	private async replace(data: any) {
-		const status = await this.dataManager.resetState(data);
-		if (status) {
+	private replace(data: any) {
+		const deleteItem = this.dataManager.replace(data);
+		if (deleteItem) {
+			if(deleteItem.dom){
+				this.scroll.scroller.content.removeChild(deleteItem.dom);
+			}
 			(<InfinityOptions<T>>this.options).destroy(data.id);
 			this.resize();
 		}

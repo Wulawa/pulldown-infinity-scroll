@@ -1,7 +1,6 @@
 <script setup lang="ts">
   import {onMounted, ref} from 'vue';
   import BScroll from '@better-scroll/core'
-  // import InfinityScroll from '@better-scroll/infinity'
   import InfinityScroll, {InfinityOptions} from "@/plugins/pulldown-infinity-scroll"
   import message from '../data/message.json'
 
@@ -125,14 +124,18 @@ const tombstone =ref<HTMLDivElement>()
      createInfinityScroll()
   })
 
- 
+  function remove(){
+    getItem(2).then((res) => {
+      bs.trigger('replace', res)
+    })
+  }
 </script>
 
 
 
 
 <template>
-  <div class="infinity">
+  <div class="infinity" @click="remove">
     <div class="template">
       <li ref="messageDom" class="infinity-item">
         <img class="infinity-avatar" width="48" height="48">

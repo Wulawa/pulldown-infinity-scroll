@@ -1,11 +1,11 @@
 {
   "name": "pulldown-infinity-scroll",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "A Better-scroll Pull-down Plugin",
-  "main": "dist/index.cjs.js",
+  "main": "dist/index.min.js",
   "module": "dist/index.esm.js",
+  "typings": "dist/plugins/pulldown-infinity-scroll/index.d.ts",
   "type": "module",
-  "types": "dist/plugin/pulldown-infinity-scroll/index.d.ts",
   "keywords": [
     "better-scroll plugin"
   ],
@@ -22,11 +22,13 @@
   },
   "devDependencies": {
     "@babel/core": "^7.21.0",
+    "@babel/plugin-transform-runtime": "^7.21.0",
     "@babel/preset-env": "^7.20.2",
     "@rollup/plugin-babel": "^6.0.3",
     "@rollup/plugin-node-resolve": "^15.0.1",
     "@types/node": "^18.14.2",
     "@vitejs/plugin-vue": "^4.0.0",
+    "core-js": "3",
     "rollup-plugin-typescript2": "^0.34.1",
     "stylus": "^0.59.0",
     "stylus-loader": "^7.1.0",
