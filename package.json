@@ -1,11 +1,10 @@
 {
   "name": "pulldown-infinity-scroll",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "A Better-scroll Pull-down Plugin",
   "main": "dist/index.min.js",
   "module": "dist/index.esm.js",
   "typings": "dist/plugins/pulldown-infinity-scroll/index.d.ts",
-  "type": "module",
   "keywords": [
     "better-scroll plugin"
   ],

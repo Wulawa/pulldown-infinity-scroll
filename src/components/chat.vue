@@ -135,7 +135,7 @@ const tombstone =ref<HTMLDivElement>()
 
 
 <template>
-  <div class="infinity" @click="remove">
+  <div class="infinity">
     <div class="template">
       <li ref="messageDom" class="infinity-item">
         <img class="infinity-avatar" width="48" height="48">
