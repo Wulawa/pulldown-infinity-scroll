@@ -1,6 +1,6 @@
 {
   "name": "pulldown-infinity-scroll",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A Better-scroll Pull-down Plugin",
   "main": "dist/index.min.js",
   "module": "dist/index.esm.js",
@@ -13,7 +13,7 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "rollup -c",
+    "build": "rollup -c --bundleConfigAsCjs",
     "preview": "vite preview"
   },
   "peerDependencies": {
