@@ -15,7 +15,6 @@ export default class IndexCalculator {
 	calculate(pos: number, list: Array<any>): { start: number; end: number } {
 		let offset = pos - this.lastPos;
 		this.lastPos = pos;
-
 		const direction = this.getDirection(offset);
 
 		// important! start index is much more important than end index.
@@ -67,11 +66,13 @@ export default class IndexCalculator {
 		// let startPos = list[i] && list[i].pos !== null ? list[i].pos + list[i].height : this.wrapperHeight
 		// let lastPos = startPos
 		let tombstone = 0;
+		// 此循环为了找到顶部
 		// 真实数据 & 在显示区间内
 		while (i < list.length - 1 && list[i].pos > boundary) {
-			if (list[i].pos !== null || i === 0) {
-				i++;
-			}
+			// if(list[i].pos == null && i !== 0) {
+			// 	break;
+			// }
+			i++;
 		}
 		// // 初识定位更新后
 		// if(i === 0) {

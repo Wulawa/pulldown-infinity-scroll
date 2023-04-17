@@ -135,10 +135,10 @@ export default class DataManager {
 			console.warn(`remove error: not find data with id:${id}`);
 		}
 	}
-	replace(data: any, index?: number): pListItem | undefined {
+	replace(data: any, index?: number): pListItem | null | undefined {
 		const i = typeof index === 'number' ? index : this.list.findIndex((item) => item.data.id === data.id);
 		if (i > -1) {
-			return this.list.splice(i, 1, new ListItem(data))[0];
+			return this.list.splice(i, 1, new ListItem(data))[0];;
 		} else {
 			console.warn(`remove error: not find data with id:${data.id}`);
 		}

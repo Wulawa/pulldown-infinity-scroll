@@ -156,6 +156,7 @@ export default class DomManager {
 	): { startPos: number; startDelta: number; endPos: number } {
 		const tombstoneEles: Array<HTMLElement> = [];
 		const { start: startPos, delta: startDelta } = this.getStartPos(list, start, end);
+		console.log(start, end);
 		let pos = startPos;
 		for (let i = start; i < end; i++) {
 			// if(i>20) {

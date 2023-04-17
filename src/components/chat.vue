@@ -21,6 +21,7 @@
   const INIT_TIME = new Date().getTime()
 
   function getItem(id: any) {
+    console.log(id);
     function pickRandom(a: Array<string>) {
       return a[Math.floor(Math.random() * a.length)]
     }
@@ -65,7 +66,6 @@ const tombstone =ref<HTMLDivElement>()
     bs = new BScroll(chat.value as HTMLDivElement, {
       'pulldown-infinity': {
         render: (item, div) => {
-            console.log(item)
             div = (messageDom.value as HTMLDivElement).cloneNode(true) as HTMLElement;
             div.dataset.id = item.id+'';
             (div.querySelector('.infinity-avatar') as HTMLImageElement).src = new URL(`../image/avatar${item.avatar}.jpg`, import.meta.url).href;
@@ -88,6 +88,11 @@ const tombstone =ref<HTMLDivElement>()
             } else {
                 div.classList.remove('infinity-from-me')
             }
+            div.addEventListener('click', () => {
+              getItem(item.id).then((res) => {
+                bs.trigger('replace', res)
+              })
+            })
             return div;
         },
         createTombstone: () => {
@@ -126,6 +131,7 @@ const tombstone =ref<HTMLDivElement>()
 
   function remove(){
     getItem(2).then((res) => {
+      console.log(res);
       bs.trigger('replace', res)
     })
   }
@@ -135,7 +141,7 @@ const tombstone =ref<HTMLDivElement>()
 
 
 <template>
-  <div class="infinity">
+  <div class="infinity" >
     <div class="template">
       <li ref="messageDom" class="infinity-item">
         <img class="infinity-avatar" width="48" height="48">
